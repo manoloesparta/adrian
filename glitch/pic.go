@@ -1,27 +1,17 @@
 package glitch
 
-import (
-	"image"
-	"os"
-)
+import "io/ioutil"
 
 // GlitchyImage is for transforming the img
 type GlitchyImage struct {
 	path   string
-	pixels []uint32
+	pixels []byte
 }
 
 // NewGlitchyImage constructor
 func NewGlitchyImage(path string) GlitchyImage {
-	img := loadImage(path)
-	pixels := []uint32{}
-
-	for y := 0; y < img.Bounds().Max.Y; y++ {
-		for x := 0; x < img.Bounds().Max.X; x++ {
-			r, g, b, a := img.At(x, y).RGBA()
-			pixels = append(pixels, r, g, b, a)
-		}
-	}
+	pixels, err := ioutil.ReadFile(path)
+	must(err)
 
 	return GlitchyImage{
 		path,
@@ -29,16 +19,18 @@ func NewGlitchyImage(path string) GlitchyImage {
 	}
 }
 
-func loadImage(path string) image.Image {
-	file, err := os.Open(path)
-	defer file.Close()
-	if err != nil {
-		panic("Image no found")
-	}
+// Corrupt is the process that changes the bytes in the image
+func (gi *GlitchyImage) Corrupt(level int) {
 
-	img, _, err := image.Decode(file)
-	if err != nil {
-		panic("Format of image not identified")
+}
+
+// Save just saves the new corrupted image
+func (gi *GlitchyImage) Save(path string) {
+
+}
+
+func must(e error) {
+	if e != nil {
+		panic(e)
 	}
-	return img
 }
