@@ -3,28 +3,27 @@ package glitch
 import "math/rand"
 
 // Filter represents the operations over image
-type Filter struct{}
 
-func (f *Filter) choose(img *GlitchyImage) {
+func choose(img *GlitchyImage) {
 	opt := rand.Intn(3)
 	switch opt {
 	case 0:
-		f.modify(img)
+		modify(img.pixels)
 	case 1:
-		f.delete(img)
+		delete(img.pixels)
 	case 2:
-		f.swap(img)
+		swap(img.pixels)
 	}
 }
 
-func (f *Filter) modify(img *GlitchyImage) {
+func modify(img []byte) {
 
 }
 
-func (f *Filter) delete(img *GlitchyImage) {
+func delete(img []byte) {
 
 }
 
-func (f *Filter) swap(img *GlitchyImage) {
+func swap(img []byte) {
 
 }
