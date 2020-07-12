@@ -1,6 +1,8 @@
 package glitch
 
-import "io/ioutil"
+import (
+	"io/ioutil"
+)
 
 // GlitchyImage is for transforming the img
 type GlitchyImage struct {
@@ -21,12 +23,16 @@ func NewGlitchyImage(path string) GlitchyImage {
 
 // Corrupt is the process that changes the bytes in the image
 func (gi *GlitchyImage) Corrupt(level int) {
-
+	slice := gi.pixels[40*16 : len(gi.pixels)-3]
+	for i := 0; i < level*3; i++ {
+		choose(slice)
+	}
 }
 
 // Save just saves the new corrupted image
 func (gi *GlitchyImage) Save(path string) {
-
+	err := ioutil.WriteFile(path, gi.pixels, 0644)
+	must(err)
 }
 
 func must(e error) {
