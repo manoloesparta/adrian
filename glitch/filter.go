@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+const batch int = 8
+
 func choose(img []byte) {
 	rand.Seed(time.Now().UTC().UnixNano())
 
@@ -20,24 +22,24 @@ func choose(img []byte) {
 }
 
 func modify(img []byte) {
-	point := rand.Intn(len(img) - 8)
-	for i := point; i < point+8; i++ {
+	point := rand.Intn(len(img) - batch)
+	for i := point; i < point+batch; i++ {
 		fact := rand.Intn(4) - 2
 		img[i] = (img[i] + (byte)(fact)) % 255
 	}
 }
 
 func delete(img []byte) {
-	point := rand.Intn(len(img) - 8)
-	img = append(img[:point], img[point+8:]...)
+	point := rand.Intn(len(img) - batch)
+	img = append(img[:point], img[point+batch:]...)
 }
 
 func swap(img []byte) {
-	one := rand.Intn(len(img) - 8)
-	sli1 := img[one : one+8]
+	one := rand.Intn(len(img) - batch)
+	sli1 := img[one : one+batch]
 
-	two := rand.Intn(len(img) - 8)
-	sli2 := img[two : two+8]
+	two := rand.Intn(len(img) - batch)
+	sli2 := img[two : two+batch]
 
 	tmp1 := append(img[:one], sli2...)
 	tmp2 := append(sli1, img[two:]...)

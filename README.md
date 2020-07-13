@@ -2,9 +2,8 @@
 
 # Adrian
 
-This project is an image glitcher inspired in the art gallery [To Adrian Rodriguez, With Love by Melanie Willhide](https://petapixel.com/2013/04/23/photographer-thankful-to-laptop-thief-for-new-creative-direction/). The picture that is in the top of this file is called [Beefcake and Betsy](https://slate.com/culture/2013/01/melanie-willhide-to-adrian-rodriguez-with-love-photos.html) after three levels of the glitcher.
+This project is an image glitcher inspired in the art gallery [To Adrian Rodriguez, With Love by Melanie Willhide](https://petapixel.com/2013/04/23/photographer-thankful-to-laptop-thief-for-new-creative-direction/). The picture that is in the top of this file is called [Beefcake and Betsy](https://slate.com/culture/2013/01/melanie-willhide-to-adrian-rodriguez-with-love-photos.html) after three levels of the glitcher. This is meant to be used as a command line interface but feel free to add it anywhere.
 
-> This project is meant to be used as a command line interface but feel free to add it anywhere.
 
 ## What this does?
 
@@ -24,6 +23,8 @@ $ sudo cp adrian /usr/local/bin/
 ```
 
 ## Usage
+
+If your image get corrupted and your previewer can't open it, just try again.
 
 ```
 adrian -f [input file] -l [levels] -o [output file]
