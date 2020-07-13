@@ -8,15 +8,15 @@ import (
 )
 
 func main() {
-	file := flag.String("f", "", "Path of jpeg to corrupt. (Required)")
+	file := flag.String("f", "", "Path of jpeg to corrupt (Required)")
 	output := flag.String("o", "output.jpeg", "The name of the corrupted file")
 	levels := flag.Int("l", 3, "How cooked you want your corrupted jpeg")
 	flag.Parse()
 
 	if *file == "" {
 		fmt.Println("\nadrian -f [input file] -l [levels] -o [output file] \n ")
-
 		flag.PrintDefaults()
+		fmt.Println()
 		os.Exit(1)
 	}
 
