@@ -23,7 +23,7 @@ func NewGlitchyImage(path string) GlitchyImage {
 
 // Corrupt is the process that changes the bytes in the image
 func (gi *GlitchyImage) Corrupt(level int) {
-	slice := gi.pixels[40*16 : len(gi.pixels)-3]
+	slice := gi.pixels[256 : len(gi.pixels)-3]
 	for i := 0; i < level*3; i++ {
 		choose(slice)
 	}

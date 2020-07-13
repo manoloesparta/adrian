@@ -22,7 +22,8 @@ func choose(img []byte) {
 func modify(img []byte) {
 	point := rand.Intn(len(img) - 8)
 	for i := point; i < point+8; i++ {
-		img[i] = (img[i] + (byte)(rand.Intn(3))) % 255
+		fact := rand.Intn(4) - 2
+		img[i] = (img[i] + (byte)(fact)) % 255
 	}
 }
 
